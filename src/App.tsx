@@ -4,6 +4,8 @@ import { AlertCircle, Send, RefreshCw } from 'lucide-react';
 import RoadmapCanvas from './components/RoadmapCanvas';
 import { generateRoadmap } from './services/geminiService';
 import { RoadmapBlock, RoadmapData } from './types/roadmap';
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react';
+
 
 function App() {
   const [roadmapData, setRoadmapData] = useState<RoadmapData | null>(null);
@@ -135,6 +137,15 @@ function App() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <div className="ml-auto">
+        <SignedOut>
+          <SignInButton />
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+      </div>
 
       {/* Error Display */}
       <AnimatePresence>
